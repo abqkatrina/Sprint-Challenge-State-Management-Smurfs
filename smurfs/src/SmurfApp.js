@@ -1,28 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { smurfs } from '../server';
-import SmurfList from './components/SmurfList';
-import SmurfForm from './components/SmurfForm';
-import { SmurfContext } from './contexts/SmurfContext';
+import React from 'react';
+import { connect } from 'react-redux';
+import { addSmurf, removeSmurf } from './actions/';
+import Smurf from './components/Smurf';
 import "./SmurfApp.css";
 
-function SmurfApp() {
-	const [smurf, setSmurf] = useState({});
+const SmurfApp = props => {
+	
 
-	useEffect(() => {
-		setSmurf({ name: "Brainey", age: "200", height: '5cm', id: 0 });
-	}, []);
+ const addSmurf = event => {
+	 event.preventDEfault();
+	 props.addSmurf(event.target.value)
+ }
 
-	console.log(SmurfContext);
+
+
 	return (
 		<div className="container">
-			<SmurfContext.Provider value={smurf}>
-				<SmurfForm />
-        		<SmurfList />
-			</SmurfContext.Provider>
+
+<			form>
+            <div>
+                <input type='text'  placeholder='Smurf Name'/>
+                <input type='text'  placeholder='Smurf Age'/>
+                <input type='text'  placeholder= 'Smurf Height'/>
+                <button type='submit' onClick={addSmurf}>Smurf!</button>
+            </div>
+           
+        	</form>
+			<div className='smurf-list'>
+				<h4>the SMURFS</h4>
+        		<ul>
+					{props.smurfs.map(smurf => { return(
+						<li><Smurf key={smurf.id} removeSmurf={removeSmurf} /></li>
+					)})}
+				</ul>
+			</div>
+
 		</div>
 	);
+					
 }
   
 
 
-export default SmurfApp;
+const mapStateToProps = state => {
+	return {
+    smurf: state.smurf
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ addSmurf, removeSmurf }
+)(SmurfApp);

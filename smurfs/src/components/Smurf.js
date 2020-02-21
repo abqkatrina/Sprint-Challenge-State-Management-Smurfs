@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
-import { SmurfContext } from "../contexts/SmurfContext";
+import React from "react";
 
-function Smurf() {
-	const smurf = useContext(SmurfContext);
+
+const Smurf = props => {
+
 
 	return (
 		<div className="profile">
-			{smurf.name}, {smurf.age}, {smurf.height}, {smurf.id}
+			{props.smurf.name},
+			{props.smurf.age},
+			{props.smurf.height},
+			{props.smurf.id}
+			<button onClick={props.removeSmurf}>X</button>
 		</div>
 	);
 }
