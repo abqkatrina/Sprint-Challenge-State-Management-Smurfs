@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./components/App";
+import SmurfApp from "./SmurfApp";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<SmurfApp />, document.getElementById("root"));
