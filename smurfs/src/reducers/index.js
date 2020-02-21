@@ -1,4 +1,4 @@
-import { ADD_SMURF, REMOVE_SMURF } from '../actions/';
+import { PLUS_SMURF, MINUS_SMURF } from '../actions/';
 
 export const initialState = {
     smurf: [{
@@ -13,7 +13,8 @@ export const Reducer = (state = initialState, action) => {
 
 	switch (action.type) {
 
-		case ADD_SMURF:
+
+		case PLUS_SMURF:
 			return {
 				...state,
 				smurf: {
@@ -22,7 +23,7 @@ export const Reducer = (state = initialState, action) => {
 				}}
 		
 
-		case REMOVE_SMURF:
+		case MINUS_SMURF:
 			return {
 				...state,
 				smurf: {
