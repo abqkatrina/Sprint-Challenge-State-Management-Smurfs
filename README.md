@@ -22,11 +22,31 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] What problem does the context API help solve?
-- [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-- [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+- [X] What problem does the context API help solve?
+
+With context objects, you don't have to pass props down through layers of compnents, just import the needed props from the object.
+
+- [X] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions are notifiers of what event has occured, reducers are pure functions that take
+that info and apply it to the current state to make a new state which is held in the store.
+Why is the store known as a 'single source of truth' in a redux application?
+The store itself is the lone holder of state in the app.
+
+- [X] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is accessible by any component connected to it while component
+state is created and used in one component and it's children via props. If the state isn't used by any other components, use component state.
+If you need to alter that state in another component, however, you need to use application state.
+
+- [X] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Thunks allow redux to work asynchronously. The thunk is an added step in the action-creators --an inner function in that function.
+
+- [X] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+I like the idea of context API better than Redux because it seems like less code and uses more of what I already know. Redux seems like it is a better manager
+in the way it maintains the store and uses reducers, though.
 
 ## Project Set Up
 
@@ -48,15 +68,15 @@ Follow these steps to set up your project:
 
 - [X] Plan and implement how you are going to manage your state for your application
 - [X] You _must_ use either context or Redux as your state management system
-- [ ] Once you have planned out your state management system, fetch data from the smurf server and display the data it returns
-- [ ] Add a form to collect info for a new smurf, and make a POST request to the server to add a new smurf to your village
+- [X] Once you have planned out your state management system, fetch data from the smurf server and display the data it returns
+- [X] Add a form to collect info for a new smurf, and make a POST request to the server to add a new smurf to your village
 
 ## API documentation
 
 ### GET '/smurfs'
 
-- [ ] Retrieve an array all the Smurfs in the Smurf DB by writing a `GET` to the endpoint `/smurfs`.
-- [ ] Double check that your response from the server is an array of smurfs.
+- [X] Retrieve an array all the Smurfs in the Smurf DB by writing a `GET` to the endpoint `/smurfs`.
+- [X] Double check that your response from the server is an array of smurfs.
 
 ```js
 [
