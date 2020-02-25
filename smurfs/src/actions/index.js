@@ -2,28 +2,32 @@
 import axios from 'axios';
 
 
-export const PLUS_SMURF ='PLUS_SMURF';
-export const MINUS_SMURF = 'MINUS_SMURF';
+export const getSmurf = () => dispatch => {
+	axios.get(`http://localhost:3333/smurfs`)
+	.then(response => {
+		console.log(response.data)
+		dispatch({ type: 'GET_SMURF_WIN', payload: response.data})})
+	.catch(error => dispatch({ type: 'GET_SMURF_LOSE', payload: error}))
+}
 
 
 
+export const addSmurf = newSmurf => dispatch => {
 
-export const addSmurf = (smurf) => dispatch => {
-
-	return axios.post('http://localhost:3333/smurfs', smurf)
+	return axios.post(`http://localhost:3333/smurfs`, newSmurf)
 	.then(response =>
-		dispatch({ type: PLUS_SMURF, payload: response.data}))	
+		dispatch({ type: 'ADD_SMURF', payload: response.data}))	
 	.catch(error => console.log('no add smurf action', error)
 	)
 }
 
 
 
-export const removeSmurf = (smurf) => dispatch => {
+export const deleteSmurf = (smurf) => dispatch => {
 	
-	// axios.delete('http://localhost:3333/smurfs/'`${smurf.id}`)
-	// .then(response => 
-	// 	dispatch({ type: MINUS_SMURF, payload: response.data}))
-	// .catch(error => console.log('no adeletesmurf action', error)
-	// )
+	axios.delete(`http://localhost:3333/smurfs/${smurf.id}`)
+	.then(response => 
+		dispatch({ type: 'DELETE_SMURF', payload: response.data}))
+	.catch(error => console.log('no deletesmurf action', error)
+	)
 }

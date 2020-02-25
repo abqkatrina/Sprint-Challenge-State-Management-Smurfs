@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { deleteSmurf } from '../actions';
 
 
 const Smurf = props => {
@@ -6,13 +8,23 @@ const Smurf = props => {
 
 	return (
 		<div className="profile">
-			{props.smurf.name},
-			{props.smurf.age},
-			{props.smurf.height},
-			{props.smurf.id}
-			<button onClick={props.removeSmurf}>X</button>
+			<p>Name :{props.name},
+			Age: {props.age},
+			Height: {props.height},
+			</p>
+			<button onClick={deleteSmurf}>X</button>
 		</div>
 	);
 }
 
-export default Smurf;
+const mapStateToProps = state => {
+	return{
+		...state,
+		smurf: state.smurf
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	{ deleteSmurf }
+)(Smurf);
