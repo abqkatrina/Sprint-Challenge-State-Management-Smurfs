@@ -9,14 +9,15 @@ const SmurfList = props => {
         <div className='smurf-list'>
             <h4>the SMURFS</h4>
             <button type='button' onClick={() => props.getSmurf()}>get smurfy</button>
-            <ul>
+            <div>
                 {props.smurfs.map( smurf => { 
                     return(
-                    <Smurf key={smurf.id}/>
+                    <Smurf key={smurf.id} name={smurf.name} age={smurf.age} height={smurf.height} />
                     )
                 })}
-            </ul> 
-        </div>)
+            </div>
+        </div>
+    )
 }
 
 const mapStateToProps = state => {

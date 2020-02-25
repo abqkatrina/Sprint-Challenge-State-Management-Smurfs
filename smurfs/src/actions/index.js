@@ -1,6 +1,12 @@
 
 import axios from 'axios';
 
+// export const GET_SMURF_START = 'GET_SMURF_START';
+// export const GET_SMURF_WIN = 'GET_SMURF_WIN';
+// export const GET_SMURF_LOSE = 'GET_SMURF_LOSE';
+// export const ADD_SMURF = 'ADD_SMURF';
+// export const DELETE_SMURF = 'DELETE_SMURF';
+
 
 export const getSmurf = () => dispatch => {
 	axios.get(`http://localhost:3333/smurfs`)
@@ -16,7 +22,7 @@ export const addSmurf = newSmurf => dispatch => {
 
 	return axios.post(`http://localhost:3333/smurfs`, newSmurf)
 	.then(response =>
-		dispatch({ type: 'ADD_SMURF', payload: response.data}))	
+		dispatch({ type: 'ADD_SMURF', type: 'GET_SMURF_WIN', payload: response.data}))
 	.catch(error => console.log('no add smurf action', error)
 	)
 }

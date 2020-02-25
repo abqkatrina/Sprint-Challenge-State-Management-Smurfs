@@ -10,9 +10,8 @@ const Smurf = props => {
 		<div className="profile">
 			<p>Name :{props.name},
 			Age: {props.age},
-			Height: {props.height},
-			</p>
-			<button onClick={deleteSmurf}>X</button>
+			Height: {props.height} 
+			<span>  </span><button onClick={props.deleteSmurf}>X</button></p>
 		</div>
 	);
 }

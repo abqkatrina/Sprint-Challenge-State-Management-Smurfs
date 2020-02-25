@@ -1,11 +1,13 @@
+// import { GET_SMURF_START, GET_SMURF_WIN, GET_SMURF_LOSE, ADD_SMURF, DELETE_SMURF } from "../actions";
+
 
 export const initialState = {
 		smurfs: [
 			{
-				name: '',
-				age: '',
-				height: '',
-				id: Date.now()
+				name: 'Brainey',
+				age: '200',
+				height: '5cm',
+				id: 0
 			}
 		],
 		isCatching: false
